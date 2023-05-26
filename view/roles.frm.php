@@ -32,7 +32,7 @@
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tableBodyRol">
             </tbody>
         </table>
     </div>

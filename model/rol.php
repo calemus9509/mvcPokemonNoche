@@ -34,6 +34,31 @@ class Rol
         }
     }
 
+    public function read()
+    {
+        try {
+            $sql = $this->conexion->getConPDO()->prepare("SELECT * FROM roles");
+            $sql->execute();
+            $response = $sql->fetchAll(\PDO::FETCH_ASSOC);
+            return $response;
+        } catch (PDOException $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
+
+    public function estado()
+    {
+        try {
+            $sql = $this->conexion->getConPDO()->prepare("UPDATE roles SET estado=? WHERE id=?");
+            $sql->bindParam(1, $this->estado);
+            $sql->bindParam(2, $this->id);
+            $sql->execute();
+            return "Estado actualizado";
+        } catch (\PDOException $e) {
+            return "Error" . $e->getMessage();
+        }
+    }
+
     /**
      * Get the value of id
      */
