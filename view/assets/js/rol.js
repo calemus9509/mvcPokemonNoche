@@ -1,3 +1,5 @@
+var id;
+
 function create() {
   let data = `txtRol=${document.getElementById("txtRol").value}`;
 
@@ -10,6 +12,23 @@ function create() {
   };
 
   fetch("../controller/roles.create.php", options)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      read();
+    });
+}
+
+function update() {
+  let data = `txtRolMod=${txtRolMod.value}&id=${this.id}`;
+  const options = {
+    method: "POST",
+    body: data,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  };
+  fetch("../controller/rol.update.php", options)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -40,7 +59,7 @@ function read() {
                       </div>
                  </td>`;
         table += `<td>
-                      <a class="btn btn-warning">Modificar</a>
+                      <a onclick="readUpdate(${element.id})" class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#updateModal">Modificar</a>
                       <a class="btn btn-danger">Eliminar</a>
                   </td>`;
         table += `</tr>`;
@@ -74,6 +93,17 @@ function updateEstado(id, estado) {
     .then((data) => {
       console.log(data);
       read();
+    });
+}
+
+function readUpdate(id) {
+  fetch(`../controller/rol.readupdate.php?id=${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      document.getElementById("txtRolMod").value = data[0].nombreRol;
+      // txtRolMod.value =data[0].nombreRol hace lo mismo que arriba
+      this.id = data[0].id;
     });
 }
 
