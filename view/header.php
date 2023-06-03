@@ -7,7 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVC Noche</title>
     <link href="../view/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../view/assets/css/all.css" rel="stylesheet">
+    <link href="../view/assets/css/alertify.css" rel="stylesheet">
+    <link href="../view/assets/css/datatables.css" rel="stylesheet">
+    <script src="../view/assets/js/jquery-3.6.0.js"></script>
     <script src="../view/assets/js/bootstrap.js"></script>
+    <script src="../view/assets/js/alertify.js"></script>
+    <script src="../view/assets/js/all.js"></script>
+    <script src="../view/assets/js/datatables.js"></script>
 </head>
 
 <body>

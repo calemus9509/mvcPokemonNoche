@@ -28,7 +28,7 @@ class Rol
             $request->bindParam(1, $this->nombreRol);
             $request->bindParam(2, $this->estado);
             $request->execute();
-            return "Rol Creado";
+            return "Rol $this->nombreRol creado";
         } catch (PDOException $e) {
             return "Error: " . $e->getMessage();
         }
@@ -53,7 +53,19 @@ class Rol
             $sql->bindParam(1, $this->nombreRol);
             $sql->bindParam(2, $this->id);
             $sql->execute();
-            return "Rol Modificado";
+            return "Rol $this->nombreRol Modificado";
+        } catch (\PDOException $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
+
+    public function delete()
+    {
+        try {
+            $sql = $this->conexion->getConPDO()->prepare("DELETE FROM roles WHERE id=?");
+            $sql->bindParam(1, $this->id);
+            $sql->execute();
+            return "Rol eliminado";
         } catch (\PDOException $e) {
             return "Error: " . $e->getMessage();
         }

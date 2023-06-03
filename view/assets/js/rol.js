@@ -14,7 +14,7 @@ function create() {
   fetch("../controller/roles.create.php", options)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      alertify.success(data);
       read();
     });
 }
@@ -31,7 +31,25 @@ function update() {
   fetch("../controller/rol.update.php", options)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      alertify.success(data);
+      read();
+    });
+}
+
+function deletes() {
+  let data = `id=${id}`;
+  const options = {
+    method: "POST",
+    body: data,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  };
+
+  fetch("../controller/rol.delete.php", options)
+    .then((response) => response.json())
+    .then((data) => {
+      alertify.success(data);
       read();
     });
 }
@@ -59,12 +77,19 @@ function read() {
                       </div>
                  </td>`;
         table += `<td>
-                      <a onclick="readUpdate(${element.id})" class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#updateModal">Modificar</a>
-                      <a class="btn btn-danger">Eliminar</a>
+                      <a onclick="readUpdate(${element.id})" class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#updateModal"> Modificar <i class="fa-solid fa-pen-ruler fa-beat"></i></a>
+                      <a onclick="readDelete(${element.id},'${element.nombreRol}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar <i class="fa-solid fa-trash-can fa-beat"></i></a>
                   </td>`;
         table += `</tr>`;
       });
       document.getElementById("tableBodyRol").innerHTML = table;
+      new DataTable("#tableRol", {
+        language: {
+          url: "./assets/json/es.json",
+        },
+        dom: "Bfrtip",
+        buttons: ["pdf", "excel", "print", "copy", "colvis"],
+      });
       readEstado();
     });
 }
@@ -105,6 +130,11 @@ function readUpdate(id) {
       // txtRolMod.value =data[0].nombreRol hace lo mismo que arriba
       this.id = data[0].id;
     });
+}
+
+function readDelete(id, nombreRol) {
+  this.id = id;
+  labelDelete.innerHTML = `Esta seguro de eliminar el rol ${nombreRol} ?`;
 }
 
 read();
