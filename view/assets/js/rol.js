@@ -83,14 +83,51 @@ function read() {
         table += `</tr>`;
       });
       document.getElementById("tableBodyRol").innerHTML = table;
+      readEstado();
       new DataTable("#tableRol", {
+        retrieve: true,
         language: {
           url: "./assets/json/es.json",
         },
         dom: "Bfrtip",
-        buttons: ["pdf", "excel", "print", "copy", "colvis"],
+        buttons: [
+          {
+            extend: "colvis",
+            text: "<i class='fa-solid fa-filter fa-beat'></i>",
+            titleAttr: "Filtrar",
+            className: "filtro",
+          },
+          {
+            extend: "excel",
+            text: "<i class='fa-solid fa-file-excel fa-bounce'></i>",
+            titleAttr: "Excel",
+            className: "excel",
+            exportOptions: { columns: [0, 1, 2] },
+          },
+          {
+            extend: "print",
+            text: "<i class='fa-solid fa-print fa-bounce'></i>",
+            titleAttr: "Imprimir",
+            className: "imprimir",
+            exportOptions: { columns: [0, 1, 2] },
+          },
+          {
+            download: "open",
+            extend: "pdf",
+            text: "<i class='fa-solid fa-file-pdf fa-bounce'></i>",
+            titleAttr: "PDF",
+            className: "pdf",
+            exportOptions: { columns: [0, 1, 2] },
+          },
+          {
+            extend: "copy",
+            text: "<i class='fa-solid fa-copy fa-bounce'></i>",
+            titleAttr: "Copiar",
+            className: "copy",
+            exportOptions: { columns: [0, 1, 2] },
+          },
+        ],
       });
-      readEstado();
     });
 }
 
