@@ -43,7 +43,7 @@ class Usuario
             $sql->execute();
             return "Usuario Creado";
         } catch (\PDOException   $e) {
-            return "Erro: " . $e->getMessage();
+            return "Error: " . $e->getMessage();
         }
     }
 
