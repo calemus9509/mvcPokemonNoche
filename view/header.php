@@ -16,6 +16,7 @@
     <script src="../view/assets/js/alertify.js"></script>
     <script src="../view/assets/js/all.js"></script>
     <script src="../view/assets/js/datatables.js"></script>
+    <script src="../view/assets/js/axios.min.js"></script>
 </head>
 
 <body>
