@@ -47,6 +47,18 @@ class Usuario
         }
     }
 
+    public function read()
+    {
+        try {
+            $sql = $this->conexion->getConPDO()->prepare("SELECT * FROM usuarios WHERE estado='A' ");
+            $sql->execute();
+            $result = $sql->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
+
     /**
      * Get the value of id
      */

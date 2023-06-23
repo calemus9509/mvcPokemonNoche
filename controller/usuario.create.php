@@ -23,6 +23,7 @@ $ususarioM->setTelefono($telefono);
 $ususarioM->setGenero($genero);
 $ususarioM->setRol($rol);
 
+$response = $ususarioM->create();
 echo json_encode($response);
 unset($ususarioM);
 unset($response);
