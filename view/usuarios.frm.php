@@ -164,7 +164,7 @@
                         </div>
                         <div class="col-4">
                             <div class="form-floating">
-                                <select name="selTipoDoc" id="selTipoDocMod" class="form-control">
+                                <select name="selTipoDocMod" id="selTipoDocMod" class="form-control">
                                     <option value="0" selected disabled>Seleccionar</option>
                                     <option value="CC">CC</option>
                                     <option value="TI">TI</option>
@@ -231,7 +231,7 @@
                         </div>
                         <div class="col-4">
                             <div class="form-floating">
-                                <select name="selGenero" id="selGenero" class="form-control">
+                                <select name="selGeneroMod" id="selGeneroMod" class="form-control">
                                     <option value="0" selected disabled>Seleccionar</option>
                                     <option value="M">Hombre</option>
                                     <option value="F">Mujer</option>
@@ -241,27 +241,27 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Modificar</button>
+                            <button onclick="update()" type="button" class="btn btn-warning " data-bs-dismiss="modal">Modificar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- eliminar -->
-        <div>
+    <!-- eliminar -->
+    <div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header bg-danger bg-gradient">
-                            <h1 class="modal-title col-11 text-center ms-4" id="deleteModalLabel">Eliminar Usuario</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger bg-gradient">
+                        <h1 class="modal-title col-11 text-center ms-4" id="deleteModalLabel">Eliminar Usuario</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button type="button" class="btn btn-primary">Eliminar</button>
@@ -270,6 +270,8 @@
                 </div>
             </div>
         </div>
-        <script src="./assets//js/usuario.js"></script>
-
-        <?php include_once "footer.php" ?>
+    </div>
+</div>
+</div>
+<script src="./assets//js/usuario.js"></script>
+<?php include_once "footer.php" ?>
