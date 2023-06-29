@@ -13,7 +13,7 @@
                 <option value="0" selected disabled>Seleccionar</option>
                 <option value="CC">CC</option>
                 <option value="TI">TI</option>
-                <option value="NUIP">NUIP</option>
+                <option value="NIUP">NIUP</option>
             </select>
             <label for="floatingInput">Tipo Doc:</label>
         </div>
@@ -261,10 +261,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-
+                        <h4 id="mensaje"></h4>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Eliminar</button>
+                            <button onclick="deletes()" type="button" class="btn bg-danger" data-bs-dismiss="modal">Eliminar</button>
                         </div>
                     </div>
                 </div>

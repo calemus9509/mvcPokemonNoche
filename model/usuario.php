@@ -28,7 +28,7 @@ class Usuario
     public function create()
     {
         try {
-            $sql = $this->conexion->getConPDO()->prepare("INSERT INTO usuarios(tipoDoc,identificacion,nombre,apellido,correo,password,direccion,telefono,genero,idRol,estado)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+            $sql = $this->conexion->getConPDO()->prepare("INSERT INTO usuarios (tipoDoc,identificacion,nombre,apellido,correo,password,direccion,telefono,genero,idRol,estado)VALUES(?,?,?,?,?,?,?,?,?,?,?)");
             $sql->bindParam(1, $this->tipoDoc);
             $sql->bindParam(2, $this->identificacion);
             $sql->bindParam(3, $this->nombre);
@@ -77,6 +77,33 @@ class Usuario
             return "Error:" . $e->getMessage();
         }
     }
+
+    public function delete()
+    {
+        try {
+            $sql = $this->conexion->getConPDO()->prepare("UPDATE usuarios SET estado='I' WHERE id=?");
+            $sql->bindParam(1, $this->id);
+            $sql->execute();
+            return "Usuario Eliminado";
+        } catch (\PDOException $e) {
+            return "Error" + $e->getMessage();
+        }
+    }
+
+    public function login()
+    {
+        try {
+            $sql = $this->conexion->getConPDO()->prepare("SELECT * FROM usuarios WHERE estado='A' AND correo=? AND password=?");
+            $sql->bindParam(1, $this->correo);
+            $sql->bindParam(2, $this->password);
+            $sql->execute();
+            $result = $sql->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } catch (\PDOException $e) {
+            return "Error" . $e->getMessage();
+        }
+    }
+
     public function readUpdate()
     {
         try {

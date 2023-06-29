@@ -6,6 +6,7 @@ function create() {
     .post("../controller/usuario.create.php", data)
     .then(function (response) {
       console.log(response);
+      read();
     })
     .catch(function (error) {
       console.log(error);
@@ -28,7 +29,7 @@ function read() {
         table += `<td>${element.nombreRol}</td>`;
         table += `<td>
                     <a onclick="readUpdate(${element.id})" class='btn btn-warning'data-bs-toggle="modal"data-bs-target="#updateModal">Modificar</a> 
-                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</a>
+                    <a onclick="readDelete(${element.id},'${element.nombre}')" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</a>
                   </td>`;
         table += `</tr>`;
       });
@@ -52,7 +53,18 @@ function update() {
     });
 }
 
-function deletes() {}
+function deletes() {
+  let data = `id=${this.id}`;
+  axios
+    .post("../controller/usuario.delete.php", data)
+    .then(function (response) {
+      console.log(error);
+      read();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
 
 function selectRol() {
   axios
@@ -88,6 +100,11 @@ function readUpdate(id) {
     .catch(function (error) {
       console.log(error);
     });
+}
+
+function readDelete(id, nombre) {
+  this.id = id;
+  mensaje.innerHTML = `Esta seguro de eliminar el usuario ${nombre} ?`;
 }
 
 selectRol();

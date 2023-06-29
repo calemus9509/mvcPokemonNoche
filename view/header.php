@@ -17,6 +17,7 @@
     <script src="../view/assets/js/all.js"></script>
     <script src="../view/assets/js/datatables.js"></script>
     <script src="../view/assets/js/axios.min.js"></script>
+    <script src="../view/assets/js/login.validate.js"></script>
 </head>
 
 <body>
@@ -50,7 +51,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled">Disabled</a>
+                                <a onclick="deleteLogin()" class="nav-link" href="#" tabindex="-1"><i class="fa-solid fa-right-to-bracket fa-bounce"></i></a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
